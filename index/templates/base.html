@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Projects</title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'frameworks/bootstrap/css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+        <script src="{% static 'frameworks/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'javascript/p5.js' %}"></script>
+        <script type="text/javascript" src="{% static 'javascript/p5.dom.js' %}"></script>
+        {% block header %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}{% endblock %}
+    </body>
+</html>

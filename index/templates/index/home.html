@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="page-header">
+  <a class="a-unstyled" href="{% url 'home' %}">Projects</a>
+</h2>
+
+<ul class="list-unstyled margin-top">
+  <li>
+    <button type="button" class="btn btn-outline-dark" id="alg" onclick="activate(this.id)">Algorithms</button>
+  </li>
+
+  <li>
+    <button type="button" class="btn btn-outline-dark" id="ml" onclick="activate(this.id)">Machine Learning</button>
+  </li>
+
+  <li>
+    <button type="button" class="btn btn-outline-dark" id="ai" onclick="activate(this.id)">Artificial Intelligence</button>
+  </li>
+</ul>
+
+<ul class="list-unstyled hidden" id="alg-info">
+  <li><a class="a-unstyled" href="{% url 'projects' direct='algorithms' name='travelling_salesman_person' %}">Travelling Salesman Person</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='algorithms' name='sorting' %}">Sorting Algorithms</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='algorithms' name='maze_generation' %}">Maze Generation</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='algorithms' name='path_finding' %}">Path Finding</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='algorithms' name='regression' %}">Regression</a></li>
+</ul>
+
+<ul class="list-unstyled hidden" id="ai-info">
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='steering_behaviours' %}">Steering Behaviours</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='smart_rockets' %}">Smart Rockets</a></li>
+</ul>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+let active = false;
+
+function activate(id) {
+    let buttons = document.getElementsByTagName('button');
+
+    for (let i = 0; i < buttons.length; i++) {
+      if (buttons[i].id != id) {
+          if (active) {
+              buttons[i].style.display = "inline";
+          } else {
+              buttons[i].style.display = "none";
+          }
+      }
+    }
+
+    let info = document.getElementById(id + "-info");
+    if (active) {
+        info.style.display = "none";
+    } else {
+        info.style.display = "inline";
+    }
+
+
+    active = !active;
+}
+</script>
+{% endblock %}
