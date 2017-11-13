@@ -36,3 +36,41 @@ ImportError: No module named 'prompt.settings'
 [2017-11-13 14:10:51 +0000] [28222] [INFO] Worker exiting (pid: 28222)
 [2017-11-13 14:10:51 +0000] [28219] [INFO] Shutting down: Master
 [2017-11-13 14:10:51 +0000] [28219] [INFO] Reason: Worker failed to boot.
+[2017-11-13 14:12:12 +0000] [28264] [INFO] Starting gunicorn 19.6.0
+[2017-11-13 14:12:12 +0000] [28264] [INFO] Listening at: http://0.0.0.0:5000 (28264)
+[2017-11-13 14:12:12 +0000] [28264] [INFO] Using worker: sync
+[2017-11-13 14:12:12 +0000] [28267] [INFO] Booting worker with pid: 28267
+[2017-11-13 14:12:12 +0000] [28267] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/gunicorn/arbiter.py", line 557, in spawn_worker
+    worker.init_process()
+  File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/usr/lib/python3/dist-packages/gunicorn/workers/base.py", line 136, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/lib/python3/dist-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/usr/lib/python3/dist-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 384, in import_app
+    __import__(module)
+  File "/home/beta/Websites/Django/projects/projects/wsgi.py", line 18, in <module>
+    application = DjangoWhiteNoise(get_wsgi_application())
+  File "/home/beta/.local/lib/python3.5/site-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/beta/.local/lib/python3.5/site-packages/django/__init__.py", line 22, in setup
+    configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+  File "/home/beta/.local/lib/python3.5/site-packages/django/conf/__init__.py", line 56, in __getattr__
+    self._setup(name)
+  File "/home/beta/.local/lib/python3.5/site-packages/django/conf/__init__.py", line 41, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/beta/.local/lib/python3.5/site-packages/django/conf/__init__.py", line 110, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'prompt.settings'
+[2017-11-13 14:12:12 +0000] [28267] [INFO] Worker exiting (pid: 28267)
+[2017-11-13 14:12:12 +0000] [28264] [INFO] Shutting down: Master
+[2017-11-13 14:12:12 +0000] [28264] [INFO] Reason: Worker failed to boot.

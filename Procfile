@@ -1,1 +1,1 @@
-web: gunicorn3 projects.wsgi:application --log-file logs.txt
+web: python3 manage.py runserver 0.0.0.0:$PORT --noreload
