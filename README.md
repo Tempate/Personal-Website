@@ -10,16 +10,16 @@ To run the code you'll have to create a virtual environment with the requirement
 
 ```
 # Create the virtual environment
-python3 -m venv venv
+$ python3 -m venv venv
 
 # Activate virtual environment
-source venv/bin/activate
+$ source venv/bin/activate
 
 # Install needed libraries
-pip3 install -r requirements.txt
+$ pip3 install -r requirements.txt
 
 # Run the project locally
-python3 manage.py runserver 0.0.0.0:8080
+$ python3 manage.py runserver 0.0.0.0:8080
 
 ```
 
