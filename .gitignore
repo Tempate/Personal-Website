@@ -1,5 +1,0 @@
-.venv
-.env
-Procfile
-db.sqlite3
-.gitignore
