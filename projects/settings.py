@@ -23,11 +23,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vjcpktgm(zx8pjz5k6vo1bb4iz7_!g+gdd3(uc&nbus8@_yrwj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
+<<<<<<< HEAD
     "192.168.1.118",
     "local"
+=======
+    "192.168.1.104",
+    "alcantarilla.herokuapp.com"
+>>>>>>> 81e1c49e5a907629b03832384b8240cede9794dd
 ]
 
 
