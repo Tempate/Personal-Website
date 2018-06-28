@@ -7,15 +7,11 @@
 
 <ul class="list-unstyled margin-top">
   <li>
-    <button type="button" class="btn btn-outline-dark" id="alg" onclick="activate(this.id)">Algorithms</button>
+    <button type="button" class="btn btn-outline-secondary" id="alg" onclick="activate(this.id)">Algorithms</button>
   </li>
 
   <li>
-    <button type="button" class="btn btn-outline-dark" id="ml" onclick="activate(this.id)">Machine Learning</button>
-  </li>
-
-  <li>
-    <button type="button" class="btn btn-outline-dark" id="ai" onclick="activate(this.id)">Artificial Intelligence</button>
+    <button type="button" class="btn btn-outline-secondary" id="ai" onclick="activate(this.id)">Artificial Intelligence</button>
   </li>
 </ul>
 
@@ -28,8 +24,12 @@
 </ul>
 
 <ul class="list-unstyled hidden" id="ai-info">
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='blocks' %}">Blocks</a></li>
   <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='steering_behaviours' %}">Steering Behaviours</a></li>
   <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='smart_rockets' %}">Smart Rockets</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='xor' %}">XOR</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='flappy_bird' %}">Flappy Bird</a></li>
+  <li><a class="a-unstyled" href="{% url 'projects' direct='ai' name='tic_tac_toe' %}">Tic Tac Toe</a></li>
 </ul>
 {% endblock %}
 

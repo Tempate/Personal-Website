@@ -24,6 +24,8 @@ function setup() {
     end = grid[grid.length - 1][grid.length - 1];
 
     algorithms = [
+        DepthFirst,
+        BreathFirst,
         Dijkstra,
         AStar
     ];

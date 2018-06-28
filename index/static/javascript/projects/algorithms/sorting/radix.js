@@ -5,11 +5,10 @@ class Radix {
         this._k = 10000;
 
         this._name = "Radix (LSD)";
-        this._summary = "Generates a sorted list by positioning a number in the position of the current digit (d). This example has been slowed down 60 times.";
+        this._summary = "Generates a sorted list by positioning a number in the position of the current digit (d).";
     }
 
     order() {
-        frameRate(1);
         this.adjustNumbers();
         numbers = this.lsd();
         this.reverseAdjustment();

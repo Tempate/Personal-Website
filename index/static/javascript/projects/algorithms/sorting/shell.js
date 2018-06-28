@@ -8,7 +8,6 @@ class Shell {
     }
 
     order() {
-        frameRate(2);
         this.sortArray();
         this._gap = Math.floor(this._gap / 2);
         this._finish = (this._gap == 0);

@@ -8,8 +8,6 @@ class Comb {
     }
 
     order() {
-        frameRate(3);
-
         let modified = false;
         for (let i = 0; i < numbers.length - this._gap; i++) {
             if (numbers[i] > numbers[i + this._gap]) {

@@ -4,11 +4,9 @@ const colour = "#CCC";
 let numbers = [];
 let w;
 
-let select;
-let desc;
+let select, desc, slider;
 
-let algorithms;
-let algorithm;
+let algorithms, algorithm;
 
 function setup() {
     let canvas = createCanvas(450, 450);
@@ -17,6 +15,8 @@ function setup() {
 
     w = width / k;
     randomNumbers();
+
+    slider = createSlider(1,60,60,1);
 
     algorithms = [
         Selection,
@@ -53,7 +53,7 @@ function setupDesc() {
 
 function draw() {
     background(17);
-    frameRate(60);
+    frameRate(slider.value());
 
     if (!algorithm._finish)
         algorithm.order();

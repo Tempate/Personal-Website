@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a class="a-unstyled" href="{% url 'home' %}">
+    <h2>Tic Tac Toe</h2>
+</a>
+
+<div style="height:100px;"></div>
+<div id="canvas" class="canvas"></div>
+{% endblock %}
+
+{% block footer %} {% load static %}
+    <script type="text/javascript" src="{% static 'javascript/projects/ai/neural_networks/matrix.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/projects/ai/neural_networks/nn.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/Brian.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/main.js' %}"></script>
+{% endblock %}

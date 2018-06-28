@@ -9,8 +9,6 @@ class Merge {
     }
 
     order() {
-        frameRate(2);
-
         if (!this._divided) {
             this.divide(numbers.slice());
             this._divided = true;

@@ -21,6 +21,10 @@ p {
     font-size: 16px;
 }
 
+button, button:active, button:focus, a, a:active, a:focus {
+  outline: none;
+}
+
 .red {
     color: #FF4040;
 }
