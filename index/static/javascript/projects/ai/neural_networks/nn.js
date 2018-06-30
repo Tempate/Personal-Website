@@ -60,8 +60,42 @@ class NeuralNetwork {
     return outputs.toArray();
   }
 
-  train_reinforcement() {
+  train_reinforcement(inputs_array, reward, scale) {
+    // Filter errors
+    if (inputs_array.length !== this.nodes[0]) {
+      console.log("Input length and input nodes don't match.");
+      return;
+    } else if (!(reward === 1 || reward === -1)) {
+      console.log("Wrong reward value.");
+      return;
+    }
 
+    // Turn input and target arrays into matrices
+    let inputs = Matrix.fromArray(inputs_array);
+    let outputs = [inputs];
+
+    // Feed forward
+    for (let i = 0; i < this.weights.length; i++) {
+      inputs = Matrix.multiply(this.weights[i], outputs[i]);
+      inputs.add(this.biases[i]);
+      outputs.push(Matrix.map(inputs, this.activation));
+    }
+
+    // Calculate error
+    let output = outputs.slice(-1)[0].toArray();
+    // Get the value the network chose
+    let choice = output.indexOf(Math.max.apply(window,output));
+
+    // Compute the error for the chosen value
+    let errors = [];
+    for (let i = 0; i < this.nodes.slice(-1)[0]; i++)
+      errors.push(0);
+    errors[choice] = 0.9 * reward * scale * this.learning_rate;
+    console.log("Hello");
+    console.table(errors);
+    errors = Matrix.fromArray(errors);
+
+    this.backpropagation(outputs, errors);
   }
 
   train_supervised(inputs_array, targets_array) {
@@ -88,7 +122,10 @@ class NeuralNetwork {
 
     let errors = Matrix.subtract(targets, outputs.slice(-1)[0]);
 
-    // Backprogragation
+    this.backpropagation(outputs, errors);
+  }
+
+  backpropagation(outputs, errors) {
     let gradient, outputsT, deltaW;
     for (let i = outputs.length-1; i > 0; i--) {
       // Calculate the gradient

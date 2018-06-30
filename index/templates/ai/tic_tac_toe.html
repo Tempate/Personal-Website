@@ -7,12 +7,20 @@
 
 <div style="height:100px;"></div>
 <div id="canvas" class="canvas"></div>
+<div id="mode"></div>
+
+<div class="row justify-content-center align-self-center">
+    <div id="stats" class="margin-top"></div>
+</div>
+
+<div id="slider"></div>
 {% endblock %}
 
 {% block footer %} {% load static %}
     <script type="text/javascript" src="{% static 'javascript/projects/ai/neural_networks/matrix.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/projects/ai/neural_networks/nn.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/Brian.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/RandomPlayer.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/Spot.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascript/projects/ai/tic_tac_toe/main.js' %}"></script>
 {% endblock %}
