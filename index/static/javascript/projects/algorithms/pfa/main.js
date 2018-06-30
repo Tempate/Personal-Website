@@ -24,8 +24,6 @@ function setup() {
     end = grid[grid.length - 1][grid.length - 1];
 
     algorithms = [
-        DepthFirst,
-        BreathFirst,
         Dijkstra,
         AStar
     ];
@@ -54,6 +52,7 @@ function setupGrid() {
 function setupSelect() {
     select = createSelect("");
     select.parent("select");
+    select.class("custom-select");
     select.changed(reset);
 
     for (let i = 0; i < algorithms.length; i++)

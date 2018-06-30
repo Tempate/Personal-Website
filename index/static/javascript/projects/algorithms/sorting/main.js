@@ -17,6 +17,7 @@ function setup() {
     randomNumbers();
 
     slider = createSlider(1,60,60,1);
+    slider.parent("slider");
 
     algorithms = [
         Selection,
@@ -37,8 +38,8 @@ function setup() {
 
 function setupSelect() {
     select = createSelect("");
-    select.id("selection");
     select.parent("select");
+    select.class("custom-select");
     for (let i = 0; i < algorithms.length; i++)
         select.option(new algorithms[i]()._name);
     select.changed(reset);

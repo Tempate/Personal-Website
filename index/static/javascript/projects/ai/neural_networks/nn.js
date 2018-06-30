@@ -60,7 +60,11 @@ class NeuralNetwork {
     return outputs.toArray();
   }
 
-  train(inputs_array, targets_array) {
+  train_reinforcement() {
+
+  }
+
+  train_supervised(inputs_array, targets_array) {
     // Filter errors
     if (inputs_array.length !== this.nodes[0]) {
       console.log("Input length and input nodes don't match.");

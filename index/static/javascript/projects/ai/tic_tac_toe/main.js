@@ -1,10 +1,16 @@
+const player = 0;
 let spots = [];
 let brian;
-const player = 0;
+
+let mode = 0;
+let modeButton;
 
 function setup() {
   let canvas = createCanvas(400,400);
   canvas.parent("canvas");
+
+  modeButton = createButton("Train");
+  modeButton.mousePressed(updateMode);
 
   brian = new Brian(1-player);
 
@@ -14,6 +20,10 @@ function setup() {
 
 function draw() {
   background(17);
+
+  if (mode) {
+    
+  }
 
   // Draw lines
   stroke(255);
@@ -29,40 +39,32 @@ function draw() {
 }
 
 function mousePressed() {
-  let x = Math.floor(3*mouseX/width);
-  let y = Math.floor(3*mouseY/height);
-  spots[x+3*y].press(player);
-  brian.play(spots);
+  if (!mode) {
+    let x = Math.floor(3*mouseX/width);
+    let y = Math.floor(3*mouseY/height);
+    spots[x+3*y].press(player);
+    brian.play(spots);
+  }
 }
 
-class Spot {
-  constructor(x,y) {
-    this.x = x;
-    this.y = y;
-    this.value = 0;
-    this.player = 0;
-  }
+function updateMode() {
+  mode = 1-mode;
+}
 
-  press(player) {
-    this.player = player;
-    this.value = -1 + 2*player;
-  }
+function checkWin(player) {
+  let wins = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
 
-  show() {
-    fill(255,0,0);
-    noStroke();
-    strokeWeight(1);
-    textSize(80);
-    const x = width/6*(2*this.x+1) - 30;
-    const y = height/6*(2*this.y+1) + 30;
-
-    switch (this.value) {
-      case -1:
-        text("X",x,y);
-        break;
-      case 1:
-        text("O",x,y);
-        break;
+  for (let i = 0; i < wins.length; i++) {
+    if (spots[wins[i][0]].value === spots[wins[i][1]].value &&
+        spots[wins[i][0]].value === spots[wins[i][2]].value) {
+        //console.log("Player " + player + " wins.");
+        return true;
     }
   }
+
+  return false;
 }

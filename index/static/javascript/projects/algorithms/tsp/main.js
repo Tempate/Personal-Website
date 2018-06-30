@@ -38,6 +38,7 @@ function setup() {
 function setupSelect() {
     select = createSelect("");
     select.parent("select");
+    select.class("custom-select");
     for (let i = 0; i < algorithms.length; i++)
         select.option(new algorithms[i]()._name);
     select.changed(reset);

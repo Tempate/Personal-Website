@@ -15,7 +15,7 @@ class Brian {
     let outputs = this.nn.predict(inputs);
 
     for (let i = 0; i < 9; i++) {
-      if (outputs[i] > record) {
+      if (outputs[i] > record && spots[i].value === 0) {
         record = outputs[i];
         move = i;
       }

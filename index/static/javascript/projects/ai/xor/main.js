@@ -22,7 +22,7 @@ function draw() {
 
   for (let data, i = 0; i < 1000; i++) {
     data = trainingData[i%4];
-    nn.train(data.inputs, data.outputs);
+    nn.train_supervised(data.inputs, data.outputs);
   }
 
   // nn.learning_rate = slider.value();

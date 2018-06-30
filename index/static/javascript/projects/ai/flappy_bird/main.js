@@ -1,13 +1,13 @@
 const speed = 3;
-const n = 250;
-const cycles = 100;
+const n = 500;
+const cycles = 200;
 
 let pipes = new Array(1);
 let birds = new Array(n);
 let deadBirds = [];
 let time = 1;
 
-let bestBird, generation=1, highscore=0;
+let bestBird, generation=1, highscore=0, score=0;
 let slider, button;
 
 let showNetwork = 0;
@@ -22,6 +22,7 @@ function setup() {
 
   button = createButton("Show network");
   button.parent("button");
+  button.class("btn");
   button.mousePressed(showAction);
 
   reset();
@@ -71,9 +72,9 @@ function draw() {
         if (!birds[i].update()) {
           deadBirds.push(birds[i]);
           birds.splice(i, 1);
-        } else if (birds[i].score > highscore) {
+        } else if (Math.floor(birds[i].score/80) > highscore) {
           bestBird = new Bird(birds[i].brain);
-          highscore = birds[i].score;
+          highscore = Math.floor(birds[i].score/80);
         }
       }
     }
@@ -94,7 +95,8 @@ function draw() {
     fill(255);
     textSize(16);
     text("Highscore: " + highscore, 10, 32);
-    text("Generation: " + generation, 10, 64);
+    text("Score: " + ((birds.length) ? Math.floor(birds[0].score/80) : 0), 10, 64);
+    text("Generation: " + generation, 10, 96);
   }
 }
 
