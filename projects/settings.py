@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "192.168.1.118",
     "local",
-    "alcantarilla.herokuapp.com"
+    "tempate.herokuapp.com",
+    "danidiaz.herokuapp.com"
 ]
 
 
