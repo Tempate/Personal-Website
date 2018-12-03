@@ -6,6 +6,10 @@ html, body {
 
     font-family: 'Roboto', sans-serif;
     color: #CCC;
+
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px; 
 }
 
 h2 {
