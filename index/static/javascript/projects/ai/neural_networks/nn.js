@@ -1,3 +1,7 @@
+function f(x) {
+  return x + ((random() < 0.1) ? randomGaussian()/2 : 0);
+}
+
 class NeuralNetwork {
   constructor(nodes, learning_rate, activation) {
     if (nodes instanceof NeuralNetwork) {
@@ -32,6 +36,9 @@ class NeuralNetwork {
       if (activation === 'tanh') {
         this.activation = x => Math.tanh(x);
         this.derivative = x => 1 - x*x;
+      } else if (activation === 'relu') {
+        this.activation = x => (x > 0) ? x : x;
+        this.derivative = x => (x > 0) ? 1 : 0.01;
       } else {
         this.activation = x => 1 / (1 + Math.exp(-x));
         this.derivative = x => x * (1 - x);
@@ -60,7 +67,7 @@ class NeuralNetwork {
     return outputs.toArray();
   }
 
-  train_reinforcement(inputs_array, reward, scale) {
+  train_reinforcement(inputs_array, move, reward, scale) {
     // Filter errors
     if (inputs_array.length !== this.nodes[0]) {
       console.log("Input length and input nodes don't match.");
@@ -84,15 +91,14 @@ class NeuralNetwork {
     // Calculate error
     let output = outputs.slice(-1)[0].toArray();
     // Get the value the network chose
-    let choice = output.indexOf(Math.max.apply(window,output));
+    let choice = output.indexOf(move);
 
     // Compute the error for the chosen value
     let errors = [];
     for (let i = 0; i < this.nodes.slice(-1)[0]; i++)
-      errors.push(0);
-    errors[choice] = 0.9 * reward * scale * this.learning_rate;
-    console.log("Hello");
-    console.table(errors);
+      errors[i] = 0;
+
+    errors[choice] = reward * scale * this.learning_rate;
     errors = Matrix.fromArray(errors);
 
     this.backpropagation(outputs, errors);

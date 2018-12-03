@@ -23,7 +23,7 @@ class Rocket {
 		this._fitness = width - distance;
 
 		if (this._success) {
-			this._fitness *= 1000 / this._time;
+			this._fitness *= 10;
 		} else if (this._crashed) {
 			this._fitness /= 5;
 		}

@@ -1,45 +1,36 @@
 class Brian {
   constructor() {
-    this.brain = new NeuralNetwork([9,32,32,9]);
+    this.brain = new NeuralNetwork([27,27,27,9], 0.3, "relu");
+    this.score = 0.0;
   }
 
-  move(player) {
+  move(game, turn) {
     let inputs = [];
 
-    for (let spot of spots)
-      inputs.push(spot.value-1);
+    for (let i = 0; i < 9; i++) {
+        if (game[i] == 0) {
+            inputs = inputs.concat([0,1,0]);
+        } else if (game[i] == turn) {
+            inputs = inputs.concat([1,0,0]);
+        } else {
+            inputs = inputs.concat([0,0,1]);
+        }
+    }
 
-    let record=0,move;
     let outputs = this.brain.predict(inputs);
+    let record = 0, move = 0;
 
     for (let i = 0; i < 9; i++) {
-      if (outputs[i] > record && spots[i].value === 0) {
-        record = outputs[i];
-        move = i;
+      if (game[i] === 0 && outputs[i] > record) {
+          record = outputs[i];
+          move = i;
       }
     }
 
-    console.log(move+1);
-    spots[move].press(player);
     return move;
   }
 
-  train(game, reward, turn) {
-    let steps = [];
-
-    // Split the game into all the different decisions
-    // the brain has taken, in a network-readable format.
-    // -1 opponents move  0 blank cell  +1 Brian's move
-    for (let i = turn; i < game.length; i += 2) {
-      let step = [0,0,0,0,0,0,0,0,0];
-
-      for (let k = 0; k < i; k++)
-        step[game[k]] = (k % 2 === turn) ? 1 : -1;
-
-      steps.push(step);
-    }
-
-    for (let i = 0; i < steps.length; i++)
-      this.brain.train_reinforcement(steps[i], reward, i+1);
+  incScore(a) {
+      this.score += a;
   }
 }

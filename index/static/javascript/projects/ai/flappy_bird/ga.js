@@ -1,7 +1,3 @@
-function f(x) {
-  return x + ((random() < 0.1) ? randomGaussian()/2 : 0);
-}
-
 function nextGeneration() {
   calculateFitness();
   for (let i = 0; i < n; i++)
