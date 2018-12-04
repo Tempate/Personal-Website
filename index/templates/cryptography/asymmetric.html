@@ -24,30 +24,50 @@
             {% csrf_token %}
             <input type="hidden" name="user" value="Alice">
             <input type="hidden" name="action" id="action1" value="{{ action }}">
-            <input type="text" name="msg" placeholder="Message from Alice">
-            <button type="submit" class="btn btn-outline-primary">Send</button>
+            <div class="input-group">
+                <input type="text" name="msg" class="form-control" placeholder="Message from Alice">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-outline-primary">Send</button>
+                </div>
+            </div>
         </form>
-        <div class="justify-content-center row" style="margin-top:20px;">
-            <p>PK: <input class="form-group" value="{{ request.session.alice.pk.0 }}" readonly></p>
+        <div class="form-group justify-content-center row" style="margin-top: 50px;">
+            <label>PK</label>
+            <div class="col-sm-8">
+                <input class="form-control form-control-sm" value="{{ request.session.alice.pk.0 }}" readonly>
+            </div>
         </div>
-        <div class="justify-content-center row">
-            <p>SK: <input class="form-group" value="{{ request.session.alice.sk.0 }}" readonly></p>
+        <div class="form-group justify-content-center row">
+            <label>SK</label>
+            <div class="col-sm-8">
+                <input class="form-control form-control-sm" value="{{ request.session.alice.sk.0 }}" readonly>
+            </div>
         </div>
     </div>
     <div class="col-sm-6">
         <h4>Bob</h4>
-        <form class="form-horizontal" action="{% url 'asymmetric' alg=alg %}" method="POST">
+        <form action="{% url 'asymmetric' alg=alg %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="user" value="Bob">
             <input type="hidden" name="action" id="action2" value="{{ action }}">
-            <input type="text" name="msg" placeholder="Message from Bob">
-            <button type="submit" class="btn btn-outline-primary">Send</button>
+            <div class="input-group">
+                <input type="text" name="msg" class="form-control" placeholder="Message from Bob">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-outline-primary">Send</button>
+                </div>
+            </div>
         </form>
-        <div class="justify-content-center row" style="margin-top:20px;">
-            <p>PK: <input class="form-group" value="{{ request.session.bob.pk.0 }}" readonly></p>
+        <div class="form-group justify-content-center row" style="margin-top: 50px;">
+            <label>PK</label>
+            <div class="col-sm-8">
+                <input class="form-control form-control-sm" value="{{ request.session.bob.pk.0 }}" readonly>
+            </div>
         </div>
-        <div class="justify-content-center row">
-            <p>SK: <input class="form-group" value="{{ request.session.bob.sk.0 }}" readonly></p>
+        <div class="form-group justify-content-center row">
+            <label>SK</label>
+            <div class="col-sm-8">
+                <input class="form-control form-control-sm" value="{{ request.session.bob.sk.0 }}" readonly>
+            </div>
         </div>
     </div>
 </div>
