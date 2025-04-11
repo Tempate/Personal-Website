@@ -14,8 +14,7 @@ SECRET_KEY = 'vjcpktgm(zx8pjz5k6vo1bb4iz7_!g+gdd3(uc&nbus8@_yrwj'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "192.168.1.118",
-    "local",
+    "127.0.0.1",
     "tempate.herokuapp.com"
 ]
 
@@ -67,20 +66,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'projects.wsgi.application'
 
 
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-"""
 
-import dj_database_url
+# import dj_database_url
 
-DATABASES = {
-    "default": dj_database_url.parse("postgres://twttgixdzahkde:e7e4f3f80b27958470d108dd660055dc47f057f22f6e920553c884ba3769efeb@ec2-54-247-120-234.eu-west-1.compute.amazonaws.com:5432/d9nv03jsmg1h6k")
-}
+# DATABASES = {
+#     "default": dj_database_url.parse("postgres://twttgixdzahkde:e7e4f3f80b27958470d108dd660055dc47f057f22f6e920553c884ba3769efeb@ec2-54-247-120-234.eu-west-1.compute.amazonaws.com:5432/d9nv03jsmg1h6k")
+# }
 
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
@@ -141,3 +138,5 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
+
+DEBUG = True
