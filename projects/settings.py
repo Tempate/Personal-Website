@@ -15,7 +15,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "tempate.herokuapp.com"
+    "danidiaz.onrender.com"
 ]
 
 INSTALLED_APPS = [
