@@ -1,6 +1,7 @@
 from django.db import models
 
 class Available(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     group = models.CharField(max_length=100)
     link = models.CharField(max_length=100, blank=True)

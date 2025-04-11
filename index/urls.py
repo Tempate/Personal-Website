@@ -1,10 +1,10 @@
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.home, name="home"),
-    url(r'^project/direct=(?P<direct>.+)&name=(?P<name>.+)$', views.projects, name="projects"),
-    url(r'^asymmetric-key/alg=(?P<alg>\w*)$', views.asymmetric, name="asymmetric"),
-    url(r'^symmetric-key/$', views.symmetric, name="symmetric"),
-    url(r'^hash/$', views.hash, name="hash")
+    re_path(r'^$', views.home, name="home"),
+    re_path(r'^project/direct=(?P<direct>.+)&name=(?P<name>.+)$', views.projects, name="projects"),
+    re_path(r'^asymmetric-key/alg=(?P<alg>\w*)$', views.asymmetric, name="asymmetric"),
+    re_path(r'^symmetric-key/$', views.symmetric, name="symmetric"),
+    re_path(r'^hash/$', views.hash, name="hash")
 ]
